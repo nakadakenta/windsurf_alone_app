@@ -1,5 +1,9 @@
 # tcg_shogi
 
+### 参考資料
+1. https://qiita.com/YutaManaka/items/60bed57196386ccce931
+2. 
+
 ---
 # プロンプト履歴
 
