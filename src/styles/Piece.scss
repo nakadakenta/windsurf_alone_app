@@ -1,0 +1,27 @@
+.piece {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8d09e;
+  border-radius: 50%;
+  border: 1px solid #333;
+  font-weight: bold;
+  font-size: 1rem;
+  user-select: none;
+  
+  &--sente {
+    color: #000;
+    transform: rotate(0deg);
+  }
+  
+  &--gote {
+    color: #d00;
+    transform: rotate(180deg);
+  }
+  
+  &--promoted {
+    background-color: #f8b09e;
+  }
+}

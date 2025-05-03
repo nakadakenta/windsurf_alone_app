@@ -1,0 +1,65 @@
+.captured-pieces {
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+  padding: 0.5rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+  &__title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  
+  &__item {
+    position: relative;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  &__count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #d00;
+    color: white;
+    font-size: 0.7rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  // 後手の持ち駒は上に表示
+  &--gote {
+    order: 1;
+    
+    @media (min-width: 768px) {
+      order: 0;
+    }
+  }
+  
+  // 先手の持ち駒は下に表示
+  &--sente {
+    order: 3;
+    
+    @media (min-width: 768px) {
+      order: 2;
+    }
+  }
+}
+
