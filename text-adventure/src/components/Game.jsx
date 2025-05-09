@@ -108,51 +108,83 @@ const Game = () => {
   return (
     <div className="game-container">
       <div className="game-screen">
-        <header>
-          <h1>テキストアドベンチャーゲーム</h1>
-          <CharacterStatus 
-            health={health} 
-            mana={mana} 
-            gold={gold} 
-            setHealth={setHealth} 
-            setMana={setMana} 
-            setGold={setGold}
-          />
-          <EventSystem
-            location={location}
-            inventory={inventory}
-            health={health}
-            mana={mana}
-            setHealth={setHealth}
-            setMana={setMana}
-            setGold={setGold}
-            setInventory={setInventory}
-          />
-        </header>
-        <main>
-          <h2>現在の場所: {location}</h2>
-          <p>{currentLocation.description}</p>
-          <p className="message">{message}</p>
-          <div className="options">
-            {currentLocation.options.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => handleOption(option)}
-                className="option-button"
-              >
-                {option.text}
-              </button>
-            ))}
+        <div className="game-header">
+          <h1 className="game-title">テキストアドベンチャーゲーム</h1>
+        </div>
+        <div className="content-area">
+          <div className="left-panel">
+            <div className="status-section">
+              <h2 className="status-title">キャラクターステータス</h2>
+              <div className="status-bar">
+                <div className="status-item">
+                  <span>HP: </span>
+                  <div className="progress-bar health-bar">
+                    <div className="progress-fill" style={{ width: `${health}%` }}></div>
+                  </div>
+                  <span>{health}/100</span>
+                </div>
+                <div className="status-item">
+                  <span>MP: </span>
+                  <div className="progress-bar mana-bar">
+                    <div className="progress-fill" style={{ width: `${mana}%` }}></div>
+                  </div>
+                  <span>{mana}/100</span>
+                </div>
+                <div className="gold-section">
+                  <span className="gold-icon">💰</span>
+                  <span>{gold}</span>
+                </div>
+              </div>
+            </div>
+            <div className="event-message">
+              <div className="event-icon">✨</div>
+              <p className="event-text">{EventSystem({
+                location,
+                inventory,
+                health,
+                mana,
+                setHealth,
+                setMana,
+                setGold,
+                setInventory
+              })}</p>
+            </div>
           </div>
-          <div className="inventory">
-            <h3>持ち物</h3>
-            <ul>
-              {inventory.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+          <div className="right-panel">
+            <div className="location-section">
+              <h2 className="location-title">現在の場所: {location}</h2>
+              <p className="location-description">{currentLocation.description}</p>
+            </div>
+            <div className="message-section">
+              <p className="message">{message}</p>
+            </div>
+            <div className="options-section">
+              <h2 className="option-title">選択肢</h2>
+              <div className="option-grid">
+                {currentLocation.options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleOption(option)}
+                    className="option-button"
+                  >
+                    {option.text}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="inventory-section">
+              <h2 className="inventory-title">持ち物</h2>
+              <ul className="inventory-list">
+                {inventory.map((item, index) => (
+                  <li key={index} className="inventory-item">
+                    <span>📦</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );
