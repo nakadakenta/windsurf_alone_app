@@ -1,3 +1,5 @@
+# https://windsurf-alone-app.vercel.app/
+
 # 概要
 * 1.5時間で作成
 * プロンプトに関しては windsurf がどのぐらい/何をしてくれるのかを把握するのが目的であったため雑に投げた
