@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Game.css';
 import CharacterStatus from './CharacterStatus';
 import EventSystem from './EventSystem';
+import SkillSystem from './SkillSystem';
+import QuestSystem from './QuestSystem';
 
 const Game = () => {
   const [location, setLocation] = useState('start');
@@ -10,6 +12,17 @@ const Game = () => {
   const [health, setHealth] = useState(100);
   const [mana, setMana] = useState(100);
   const [gold, setGold] = useState(100);
+  const [level, setLevel] = useState(1);
+  const [skills, setSkills] = useState({
+    combat: 1,
+    exploration: 1,
+    diplomacy: 1,
+    magic: 1
+  });
+  const [quests, setQuests] = useState({
+    'dragon_treasure': { accepted: false, completed: false },
+    'village_secret': { accepted: false, completed: false }
+  });
 
   const locations = {
     start: {
@@ -135,6 +148,21 @@ const Game = () => {
                   <span>{gold}</span>
                 </div>
               </div>
+            </div>
+            <div className="skill-section">
+              <SkillSystem 
+                skills={skills} 
+                setSkills={setSkills} 
+                level={level} 
+                setLevel={setLevel} 
+              />
+            </div>
+            <div className="quest-section">
+              <QuestSystem 
+                quests={quests} 
+                setQuests={setQuests} 
+                inventory={inventory} 
+              />
             </div>
             <div className="event-message">
               <div className="event-icon">✨</div>
